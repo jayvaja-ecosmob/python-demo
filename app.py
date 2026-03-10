@@ -1,7 +1,5 @@
 def count_vowels(file_path):
 
-    vowels = "aeiouAEIOU"
-
     count = {
         "a":0,
         "e":0,
@@ -28,3 +26,10 @@ print("Vowel Count:\n")
 
 for vowel, value in result.items():
     print(vowel, ":", value)
+
+
+# New section (equivalent to `cat text.txt`)
+print("\nFile Content:\n")
+
+with open(file_name, "r") as file:
+    print(file.read())
