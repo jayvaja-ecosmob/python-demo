@@ -66,7 +66,7 @@ pipeline {
             steps {
                 sshagent(['serverA-ssh']) {
                     sh '''
-                    ssh ubuntu@172.31.16.199 "
+                    ssh -o StrictHostKeyChecking=no ubuntu@172.31.16.199 "
                     docker pull jayv1161/python-demo:latest
                     docker stop python-demo || true
                     docker rm python-demo || true
@@ -84,7 +84,7 @@ pipeline {
             steps {
                 sshagent(['serverB-ssh']) {
                     sh '''
-                    ssh ubuntu@172.31.66.75 "
+                    ssh -o StrictHostKeyChecking=no ubuntu@172.31.66.75 "
                     docker pull jayv1161/python-demo:latest
                     docker stop python-demo || true
                     docker rm python-demo || true
@@ -105,3 +105,4 @@ pipeline {
         }
     }
 }
+
