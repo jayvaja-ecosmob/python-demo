@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "jayv1161/python-demo"
-        APP_VERSION = "3.0"
+        APP_VERSION = "4.0"
         IMAGE_TAG = "v${APP_VERSION}.${BUILD_NUMBER}"
     }
     stages {
@@ -28,10 +28,13 @@ pipeline {
             }
         }
 
-        stage('Run Python Script') {
-            steps {
-                sh 'python3 app.py'
-            }
+	
+	stage('Quality Gate') {
+	   steps {
+               timeout(time: 5, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+               }
+           }
         }
 
         stage('Build Docker Image') {
@@ -105,3 +108,4 @@ pipeline {
         }
     }
 }
+
