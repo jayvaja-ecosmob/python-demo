@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "jayv1161/python-demo"
-        APP_VERSION = "4.0"
+        APP_VERSION = "5.0"
         IMAGE_TAG = "v${APP_VERSION}.${BUILD_NUMBER}"
     }
     stages {
@@ -23,6 +23,7 @@ pipeline {
                     -Dsonar.projectKey=python-demo \
                     -Dsonar.projectName=python-demo \
                     -Dsonar.sources=.
+		    -Dsonar.language=py
                     """
                 }
             }
