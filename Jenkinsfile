@@ -23,7 +23,6 @@ pipeline {
                     -Dsonar.projectKey=python-demo \
                     -Dsonar.projectName=python-demo \
                     -Dsonar.sources=.
-		    -Dsonar.language=py
                     """
                 }
             }
